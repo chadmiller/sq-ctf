@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+## seq 0 256 |while read n; do python3 yoteyeetstream $n& done
+
+import sys
+import subprocess
+from itertools import cycle
+one = int(sys.argv[1])
+
+target = b"yoteyeet"
+
+for two in range(256):
+    pairs = [one, two]
+    key = bytes((l^r) for l, r in zip(target, cycle(pairs))) + b"\n"
+    proc = subprocess.run(["./itsjustanxor"], input=key, stdout=subprocess.PIPE)
+    if b"that aint it dawg" not in proc.stdout:
+        print(key, one, two)
