@@ -1,6 +1,6 @@
 
 01-answer: pyenv-stamp
-	false
+	./01-solve $@ 01-data
 
 pyenv-stamp: pyrequirements.txt
 	test -d pyenv || python3 -m venv pyenv
